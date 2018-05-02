@@ -24,7 +24,7 @@ html ="""
               
                 cursor: default;
                 background-color: #fff;
-                color: #76A500;
+                color: #006CFF;
                 background-position: center center;
                 font-family: "RoboReg", "Helvetica Neue",Helvetica,Arial,sans-serif;
                 font-size: 14px;
@@ -42,7 +42,7 @@ html ="""
             }
             
             a, a:active, a:focus{
-                color: #337AB7;
+                color: #0042FF;
             }
             
             a:hover{
@@ -80,7 +80,7 @@ html ="""
             }
             
             #balance_tab h4, #balance_tab h5{
-                color: #76A500;
+                color: #006CFF;
             }
             
             #balance_tab h5 span{
@@ -145,11 +145,11 @@ html ="""
             }
             
             .tx-list.tx-pool, .tx-list.tx-pending, .tx-list.tx-pending a, .tx-list.tx-pending a:active, .tx-list.tx-pending a:focus, .tx-list.tx-pool a, .tx-list.tx-pool a:active, .tx-list.tx-pool a:focus{
-                color: orange;
+                color: #B84173;
             }
             
             .tx-list a:hover{
-                color: #337AB7;
+                color: #0042FF;
             }
             
             .tx-list.txid{
@@ -325,7 +325,7 @@ html ="""
             }
             
             .panel-default>.panel-heading a[aria-expanded="true"] {
-              background-color: #2196F3;
+              background-color: #919B9B;
               color: #fff;
               font-weight: bold;
             }
