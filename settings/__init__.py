@@ -13,12 +13,12 @@ import logging
 
 from utils.common import getHomeDir, makeDir
 
-USER_AGENT = "Sumo LITE Wallet"
-APP_NAME = "Sumo LITE Wallet"
-VERSION = [0, 1, 0]
+USER_AGENT = "Solace Remote Wallet"
+APP_NAME = "Solace Remote Wallet"
+VERSION = [0, 0, 1]
 
 
-_data_dir = makeDir(os.path.join(getHomeDir(), 'SumoLITEWallet'))
+_data_dir = makeDir(os.path.join(getHomeDir(), 'SolaceRemote'))
 DATA_DIR = _data_dir
 
 log_file  = os.path.join(DATA_DIR, 'logs', 'app.log') # default logging file
@@ -34,14 +34,14 @@ seed_languages = [("0", "English"),
                 ]
 
 # COIN - number of smallest units in one coin
-COIN = 1000000000.0
+COIN = 10000000.0
 
-WALLET_RPC_PORT = 19736
-WALLET_RPC_PORT_SSL = 19737
+WALLET_RPC_PORT = 19999
+WALLET_RPC_PORT_SSL = 20000
 
-REMOTE_DAEMON_HOST = "wallet-node.sumokoin.com"
-REMOTE_DAEMON_PORT = 4444
-REMOTE_DAEMON_SSL_PORT = 4446
+REMOTE_DAEMON_HOST = "node.solace-coin.com"
+REMOTE_DAEMON_PORT = 22222
+REMOTE_DAEMON_SSL_PORT = 22226
 REMOTE_DAEMON_ADDRESS = "%s:%s" % (REMOTE_DAEMON_HOST, REMOTE_DAEMON_PORT)
 REMOTE_DAEMON_SSL_ADDRESS = "%s:%s" % (REMOTE_DAEMON_HOST, REMOTE_DAEMON_SSL_PORT)
 

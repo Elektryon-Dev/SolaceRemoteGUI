@@ -521,7 +521,7 @@ html ="""
                     if(tx.hasOwnProperty('destinations')){
                         var destinations = tx['destinations'];
                         for(var i=0; i < destinations.length; i++ ){
-                            dest_html += '<li>Amount: <span class="tx-list tx-amount tx-' + tx['status'] + '">' + printMoney(destinations[i]['amount']/1000000000) + "</span>Address: <strong>" + destinations[i]['address'] + "</strong></li>";
+                            dest_html += '<li>Amount: <span class="tx-list tx-amount tx-' + tx['status'] + '">' + printMoney(destinations[i]['amount']/10000000) + "</span>Address: <strong>" + destinations[i]['address'] + "</strong></li>";
                         }
                     }
                     
@@ -534,8 +534,8 @@ html ="""
                                                             'tx_fa_icon': tx['direction'] == "in" ? "mail-forward" : "reply",
                                                             'tx_id': tx['txid'],
                                                             'tx_payment_id': tx['payment_id'], 
-                                                            'tx_amount': printMoney(tx['amount']/1000000000.),
-                                                            'tx_fee': printMoney(tx['fee']/1000000000.),
+                                                            'tx_amount': printMoney(tx['amount']/10000000.),
+                                                            'tx_fee': printMoney(tx['fee']/10000000.),
                                                             'tx_fee_hide': tx['fee'] > 0 ? '' : 'tx-fee-hide',
                                                             'tx_date': dateConverter(tx['timestamp']),
                                                             'tx_time': timeConverter(tx['timestamp']),
@@ -573,7 +573,7 @@ html ="""
                             'tx_id': tx['txid'],
                             'tx_id_short': tx['txid'].substring(0, 26) + "...",
                             'tx_payment_id': tx['payment_id'].substring(0, 16),
-                            'tx_amount': printMoney(tx['amount']/1000000000.),
+                            'tx_amount': printMoney(tx['amount']/10000000.),
                             'tx_height': tx['height'],
                             'cls_in_out': tx['status']
                         });
@@ -718,8 +718,8 @@ html ="""
                                                             'tx_fa_icon': tx['direction'] == "in" ? "mail-forward" : "reply",
                                                             'tx_id': tx['txid'],
                                                             'tx_payment_id': tx['payment_id'], 
-                                                            'tx_amount': printMoney(tx['amount']/1000000000.),
-                                                            'tx_fee': printMoney(tx['fee']/1000000000.),
+                                                            'tx_amount': printMoney(tx['amount']/10000000.),
+                                                            'tx_fee': printMoney(tx['fee']/10000000.),
                                                             'tx_fee_hide': tx['fee'] > 0 ? '' : 'tx-fee-hide',
                                                             'tx_date': dateConverter(tx['timestamp']),
                                                             'tx_time': timeConverter(tx['timestamp']),
@@ -867,9 +867,9 @@ html ="""
                     errors.push("Address is required!");
                     $('#send_address').parent().addClass('has-error');
                 }
-                else if(!((address.substr(0, 4) == "Sumo" && address.length == 99) || 
-                    (address.substr(0, 4) == "Sumi"  && address.length == 110) || 
-                    (address.substr(0, 4) == "Subo"  && address.length == 98)))
+                else if(!((address.substr(0, 2) == "So" && address.length == 97) || 
+                    (address.substr(0, 2) == "Si"  && address.length == 109) || 
+                    (address.substr(0, 2) == "Sa"  && address.length == 98)))
                 {
                     errors.push("Address is not valid!");
                     $('#send_address').parent().addClass('has-error');
@@ -1206,8 +1206,8 @@ html ="""
                                 <h5><i class="fa fa-fw fa-unlock"></i> Unlocked Balance:</h5>
                             </div>
                             <div class="col-xs-6" style="text-align:right">
-                                <h5><span id="balance">0.000000000</span> <small>SUMO</small> <span class="syncing"> (syncing)</span></h5>
-                                <h5><span id="unlocked_balance">0.000000000</span> <small>SUMO</small> <span class="syncing"> (syncing)</span></h5>
+                                <h5><span id="balance">0.000000000</span> <small>SOLACE</small> <span class="syncing"> (syncing)</span></h5>
+                                <h5><span id="unlocked_balance">0.000000000</span> <small>SOLACE</small> <span class="syncing"> (syncing)</span></h5>
                             </div>
                             <div class="col-xs-12" style="margin-top: 10px">
                                 <button id="btn_rescan_spent" type="button" class="btn btn-primary" onclick="rescan_spent()" disabled><i class="fa fa-sort-amount-desc"></i> Rescan Spent</button>
@@ -1270,10 +1270,10 @@ html ="""
                                     <label for="send_mixins" class="col-xs-4 control-label">Privacy <sup>1</sup></label>
                                     <div class="col-xs-8">
                                         <select id="send_mixins" class="form-control">
-                                          <option value="12" selected>12 mixins (default)</option>
-                                          <option value="15">15 mixins</option>
-                                          <option value="18">18 mixins</option>
-                                          <option value="24">24 mixins</option>
+                                          <option value="2" selected>2 mixins (default)</option>
+                                          <option value="6">6 mixins</option>
+                                          <option value="12">12 mixins</option>
+                                          <option value="20">20 mixins</option>
                                           <option value="36">36 mixins</option>
                                           <option value="48">48 mixins</option>
                                           <option value="60">60 mixins</option>
@@ -1432,7 +1432,7 @@ html ="""
         <script id="recent_tx_row_templ" type="x-tmpl-mustache">
             <div class="col-sm-12">
                 <div class="col-xs-10" style="padding-right:0">
-                    <p class="tx-list tx-{{cls_in_out}}"><i class="fa fa-{{ tx_fa_icon }}"></i> ({{tx_direction}}) <span class="tx-list txid"><a href="javascript:open_link('https://explorer.sumokoin.com/tx/{{ tx_id }}')" title="View on blockchain explorer">{{ tx_id }}</a></span></p>
+                    <p class="tx-list tx-{{cls_in_out}}"><i class="fa fa-{{ tx_fa_icon }}"></i> ({{tx_direction}}) <span class="tx-list txid"><a href="javascript:open_link('https://explorer.solace-coin.com/tx/{{ tx_id }}')" title="View on blockchain explorer">{{ tx_id }}</a></span></p>
                     Payment ID: <span class="tx-list tx-payment-id">{{ tx_payment_id }}</span><br/>
                     Height: <span class="tx-list tx-height">{{ tx_height }}</span>  Date: <span class="tx-list tx-date">{{ tx_date }}</span> Time: <span class="tx-list tx-time">{{ tx_time }}</span> Status: <span class="tx-list tx-status">{{ tx_status }}</span><br/>
                     <p style="font-size:140%">Amount: <span class="tx-list tx-{{cls_in_out}} tx-amount {{tx_lock_cls}}">{{{tx_lock_icon}}}{{ tx_amount }}</span> <span class="{{ tx_fee_hide }}">Fee:</span> <span class="tx-list tx-{{cls_in_out}} tx-fee {{ tx_fee_hide }}">{{ tx_fee }}</span></p> 
@@ -1446,7 +1446,7 @@ html ="""
         
         <script id="tx_detail_templ" type="x-tmpl-mustache">
             <p class="tx-list tx-{{cls_in_out}}" style="font-size: 90%"><i class="fa fa-{{ tx_fa_icon }}"></i> {{tx_direction}}<br>
-                <span class="tx-list txid"><a href="javascript:open_link('https://explorer.sumokoin.com/tx/{{ tx_id }}')" title="View on blockchain explorer">{{ tx_id }}</a></span>
+                <span class="tx-list txid"><a href="javascript:open_link('https://explorer.solace-coin.com/tx/{{ tx_id }}')" title="View on blockchain explorer">{{ tx_id }}</a></span>
             </p>
             <ul style="font-size: 90%">
                 <li>Payment ID: <span class="tx-list tx-payment-id">{{ tx_payment_id }}</span></li>

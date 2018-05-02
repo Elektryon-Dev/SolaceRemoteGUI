@@ -110,7 +110,7 @@ class BaseWebUI(QMainWindow):
         self.view.setZoomFactor(1)
         
         self.setWindowTitle(APP_NAME)
-        self.icon = self._getQIcon('sumokoin_64x64.png')
+        self.icon = self._getQIcon('solace_64x64.png')
         self.setWindowIcon(self.icon)
         
         self.setCentralWidget(self.view)
@@ -185,11 +185,11 @@ class MainWebUI(BaseWebUI):
         
         # Setup the system tray icon
         if sys.platform == 'darwin':
-            tray_icon = 'sumokoin_16x16_mac.png'
+            tray_icon = 'solace_16x16_mac.png'
         elif sys.platform == "win32":
-            tray_icon = 'sumokoin_16x16.png'
+            tray_icon = 'solace_16x16.png'
         else:
-            tray_icon = 'sumokoin_32x32_ubuntu.png'
+            tray_icon = 'solace_32x32_ubuntu.png'
         
         self.trayIcon = QSystemTrayIcon(self._getQIcon(tray_icon))
         self.trayIcon.setToolTip(tray_icon_tooltip)
@@ -198,7 +198,7 @@ class MainWebUI(BaseWebUI):
         self.debug = debug
         self.hub = hub
         
-        self.sumokoind_daemon_manager = None
+        self.solaced_daemon_manager = None
         self.wallet_cli_manager = None
         self.wallet_rpc_manager = None
         self.wallet_rpc_manager_ssl = None
@@ -311,8 +311,8 @@ class MainWebUI(BaseWebUI):
         counter = 0
         while True:
             self.hub.app_process_events(1)
-            sumokoind_info = self.daemon_rpc_request.get_info()
-            if sumokoind_info['status'] == "OK":
+            solaced_info = self.daemon_rpc_request.get_info()
+            if solaced_info['status'] == "OK":
                 self.wallet_rpc_manager = WalletRPCManager(self.app.property("ResPath"), \
                                                 self.wallet_info.wallet_filepath, \
                                                 wallet_password, \
@@ -364,17 +364,17 @@ class MainWebUI(BaseWebUI):
         
     def _update_daemon_status(self):
         target_height = 0
-        sumokoind_info = self.daemon_rpc_request.get_info()
-        if sumokoind_info['status'] == "OK":
+        solaced_info = self.daemon_rpc_request.get_info()
+        if solaced_info['status'] == "OK":
             status = "Connected"
-            self.current_height = int(sumokoind_info['height'])
-            target_height = int(sumokoind_info['target_height'])
+            self.current_height = int(solaced_info['height'])
+            target_height = int(solaced_info['target_height'])
             if target_height == 0 or target_height < self.current_height:
                 target_height = self.current_height
             if self.target_height < target_height:
                 self.target_height = target_height;
         else:
-            status = sumokoind_info['status']
+            status = solaced_info['status']
         
         info = {"status": status, 
                 "current_height": self.current_height, 
@@ -383,8 +383,8 @@ class MainWebUI(BaseWebUI):
         
         self.hub.update_daemon_status(json.dumps(info))
         
-        sync_status = "Disconnected" if sumokoind_info['status'] != "OK" else "Synchronizing..."
-        if sumokoind_info['status'] == "OK" and self.current_height == self.target_height:
+        sync_status = "Disconnected" if solaced_info['status'] != "OK" else "Synchronizing..."
+        if solaced_info['status'] == "OK" and self.current_height == self.target_height:
             sync_status = "Connected"
         
         self.trayIcon.setToolTip("%s\n%s (%d/%d)" % (tray_icon_tooltip, sync_status,
@@ -563,7 +563,7 @@ class MainWebUI(BaseWebUI):
         
     def about(self):
         QMessageBox.about(self, "About", \
-            u"%s <br><br>Copyright© 2018 - Sumokoin Projects (www.sumokoin.org)" % self.agent)
+            u"%s <br><br>Copyright© 2018 - Sumokoin Projects (www.sumokoin.org)<br>Copyright© 2018 - SolaceCoin" % self.agent)
     
     def _load_wallet(self):
         if self.wallet_info.load():

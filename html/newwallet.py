@@ -289,7 +289,7 @@ html ="""
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label for="wallet_address">Address</label>
-                            <input id="wallet_address" type="text" class="form-control address-box" style="color:#c7254e;" readonly="readonly" value="Sumoo..."/>
+                            <input id="wallet_address" type="text" class="form-control address-box" style="color:#c7254e;" readonly="readonly" value="cash..."/>
                         </div>
                         <div class="form-group">
                             <label for="wallet_seed_words">Mnemonic seed <code style="font-weight: bold;">(Important: Always backup these seed words for wallet restoration)</code></label>
@@ -300,8 +300,8 @@ html ="""
                             <input id="wallet_viewkey" class="form-control address-box" type="text" readonly="readonly" />
                         </div>
                         <div class="form-group">
-                            <h5><i>Balance:</i> <span id="balance">0.000000000</span></h5>
-                            <h5><i>Unlocked Balance:</i> <span id="unlocked_balance">0.000000000</span></h5>
+                            <h5><i>Balance:</i> <span id="balance">0.0000000</span></h5>
+                            <h5><i>Unlocked Balance:</i> <span id="unlocked_balance">0.0000000</span></h5>
                         </div>
                     </div>
                 </div>

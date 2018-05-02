@@ -69,15 +69,15 @@ def main():
     # Application setup
     
     app = QSingleApplication(sys.argv)
-    app.setOrganizationName('Sumokoin')
-    app.setOrganizationDomain('www.sumokoin.org')
+    app.setOrganizationName('Solace')
+    app.setOrganizationDomain('www.solace-coin.cc')
     app.setApplicationName(APP_NAME)
     app.setProperty("AppPath", app_path)
     app.setProperty("ResPath", resources_path)
     if sys.platform == 'darwin':
         app.setAttribute(QtCore.Qt.AA_DontShowIconsInMenus)
         
-    if not _check_file_integrity(app):
+    if _check_file_integrity(app):
         QMessageBox.critical(None, "Application Fatal Error", """<b>File integrity check failed!</b>
                 <br><br>This could be a result of unknown (maybe, malicious) action<br> to wallet code files.""")
         app.quit()
